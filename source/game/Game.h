@@ -5,6 +5,7 @@
 
 #include "Scene.h"
 #include "Scene_Test.h"
+#include "Scene_Test_2.h"
 
 class Game {
 
@@ -18,11 +19,10 @@ public:
 private:
 
 	std::shared_ptr<sf::RenderWindow> window;
-	std::unique_ptr<Scene> scene;
+	std::shared_ptr<Scene> scene = nullptr;
 
-	std::unique_ptr<Scene> next_scene = nullptr;
+	std::shared_ptr<Scene_ID> next_scene_id;
 
-	template <typename T> void change_scene();	//! Create new scene object
 	void initialize_new_scene();	//! Actually switch scene to new scene
 
 };

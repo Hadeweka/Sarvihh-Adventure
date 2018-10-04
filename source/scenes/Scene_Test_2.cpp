@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Scene_Test.h"
+#include "Scene_Test_2.h"
 
-void Scene_Test::on_init() {
+void Scene_Test_2::on_init() {
 
-	map.load(100, 100);
+	map.load(10, 10);
 
 	actor_x = 0.5f * 32.0f;
 	actor_y = 0.5f * 18.0f;
@@ -14,27 +14,27 @@ void Scene_Test::on_init() {
 
 }
 
-void Scene_Test::draw_routine() {
+void Scene_Test_2::draw_routine() {
 
 	map.reload_layers(actor_x, actor_y);
 	window->draw(map, sf::BlendAlpha);
 }
 
-void Scene_Test::update_routine() {
+void Scene_Test_2::update_routine() {
 
 	map.update();
 	update_view();
 
 }
 
-void Scene_Test::update_view() {
+void Scene_Test_2::update_view() {
 
 	view.setCenter(actor_x * 60, actor_y * 60);
 	window->setView(view);
 
 }
 
-void Scene_Test::process_events() {
+void Scene_Test_2::process_events() {
 
 	sf::Event event;
 
@@ -47,7 +47,6 @@ void Scene_Test::process_events() {
 	while (window->pollEvent(event)) {
 
 		if (event.key.code == sf::Keyboard::Escape) change_scene(Scene_ID::None);
-		if (event.key.code == sf::Keyboard::Enter) change_scene(Scene_ID::Test_2);
 
 	}
 

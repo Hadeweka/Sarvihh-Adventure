@@ -15,37 +15,42 @@ Game::Game() {
 	//window->setFramerateLimit(60);	//! Maybe 120
 	window->setVerticalSyncEnabled(true);
 
-	change_scene<Scene_Test>();
+	next_scene_id = std::make_shared<Scene_ID>(Scene_ID::Test);
 	initialize_new_scene();
 
 }
 
 void Game::loop() {
 
-	while (window->isOpen()) {
+	//! Main loop
+	while (window->isOpen() && scene) {
 
 		scene->draw();
 		scene->process_events();
 		scene->update();
 
-		if (next_scene) initialize_new_scene();
+		if (*next_scene_id == Scene_ID::None) {
+			scene = nullptr;
+		} else if (*next_scene_id != Scene_ID::No_Change) {
+			initialize_new_scene();
+		}
 
 	}
 
-	//system("pause");
-
-}
-
-template <typename T> void Game::change_scene() {
-	
-	next_scene = std::make_unique<T>(window);
+	if (window->isOpen()) window->close();
 
 }
 
 void Game::initialize_new_scene() {
 
-	scene = std::move(next_scene);
-	scene->init();
-	next_scene = nullptr;
+	//! Clean up last scene if available
+	if(scene) scene->on_exit();
+
+	//! Change to new scene
+	if (*next_scene_id == Scene_ID::Test) scene = std::make_shared<Scene_Test>(window, next_scene_id);
+	if (*next_scene_id == Scene_ID::Test_2) scene = std::make_shared<Scene_Test_2>(window, next_scene_id);
+
+	scene->on_init();
+	*next_scene_id = Scene_ID::No_Change;
 
 }
