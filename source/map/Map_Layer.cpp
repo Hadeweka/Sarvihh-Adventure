@@ -101,7 +101,7 @@ void Map_Layer::generate_mesh(float cam_x, float cam_y) {
 void Map_Layer::load_tiles(unsigned int width, unsigned int height, std::shared_ptr<Counter> frame_counter_ptr) {
 
 	//! TODO: Put files in build folder
-	if (!tileset.loadFromFile("D:/Dev/Spiele/SFML/Sarvihh/Tileset.png")) {
+	if (!tileset.loadFromFile("media/graphics/Tileset.png")) {
 
 		exit(-1);
 		//! TODO: Error handling

@@ -27,4 +27,5 @@ set(SOURCES Sarvihh.cpp ${MAP_SOURCES} ${SCENE_SOURCES} ${GAME_SOURCES})
 add_executable(Sarvihh ${SOURCES})
 target_link_libraries(Sarvihh sfml-graphics sfml-audio sfml-system sfml-window)
 
-# TODO: Install ressources to build directory or link them to executable
+# Copy resources
+configure_file(media/graphics/Tileset.png media/graphics/Tileset.png COPYONLY)
