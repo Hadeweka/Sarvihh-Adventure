@@ -6,7 +6,7 @@
 #include "Scene.h"
 #include "Map.h"
 
-class Scene_Test : public Scene {
+class Scene_Map : public Scene {
 
 public:
 

@@ -15,7 +15,7 @@ Game::Game() {
 	//window->setFramerateLimit(60);	//! Maybe 120
 	window->setVerticalSyncEnabled(true);
 
-	next_scene_id = std::make_shared<Scene_ID>(Scene_ID::Test);
+	next_scene_id = std::make_shared<Scene_ID>(Scene_ID::Map);
 	initialize_new_scene();
 
 }
@@ -47,7 +47,8 @@ void Game::initialize_new_scene() {
 	if(scene) scene->on_exit();
 
 	//! Change to new scene
-	if (*next_scene_id == Scene_ID::Test) scene = std::make_shared<Scene_Test>(window, next_scene_id);
+	if (*next_scene_id == Scene_ID::Map) scene = std::make_shared<Scene_Map>(window, next_scene_id);
+	if (*next_scene_id == Scene_ID::Menu) scene = std::make_shared<Scene_Menu>(window, next_scene_id);
 	if (*next_scene_id == Scene_ID::Test_2) scene = std::make_shared<Scene_Test_2>(window, next_scene_id);
 
 	scene->on_init();

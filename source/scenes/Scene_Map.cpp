@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Scene_Test.h"
+#include "Scene_Map.h"
 
-void Scene_Test::on_init() {
+void Scene_Map::on_init() {
 
 	map.load(100, 100);
 
@@ -14,27 +14,27 @@ void Scene_Test::on_init() {
 
 }
 
-void Scene_Test::draw_routine() {
+void Scene_Map::draw_routine() {
 
 	map.reload_layers(actor_x, actor_y);
 	window->draw(map, sf::BlendAlpha);
 }
 
-void Scene_Test::update_routine() {
+void Scene_Map::update_routine() {
 
 	map.update();
 	update_view();
 
 }
 
-void Scene_Test::update_view() {
+void Scene_Map::update_view() {
 
 	view.setCenter(actor_x * 60, actor_y * 60);
 	window->setView(view);
 
 }
 
-void Scene_Test::process_events() {
+void Scene_Map::process_events() {
 
 	sf::Event event;
 
