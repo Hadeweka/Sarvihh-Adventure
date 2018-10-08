@@ -9,7 +9,6 @@ set (CMAKE_CXX_STANDARD 17)
 
 # Load SFML libraries
 set(SFML_STATIC_LIBRARIES TRUE)
-#set(SFML_DIR "D:/Dev/Libs/SFML-2.5.0-VS2017/lib/cmake/SFML")
 find_package(SFML COMPONENTS graphics audio REQUIRED)
 
 # TODO: Remove absolute path (e.g. put it into config file)

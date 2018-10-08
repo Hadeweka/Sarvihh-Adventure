@@ -23,7 +23,7 @@
       ],
       "buildRoot": "D:\\Dev\\Spiele\\SFML\\Sarvihh\\bin\\build\\${name}",
       "installRoot": "D:\\Dev\\Spiele\\SFML\\Sarvihh\\bin\\install\\${name}",
-      "cmakeCommandArgs": "",
+      "cmakeCommandArgs": "-DSFML_DIR=D:\\Dev\\Libs\\SFML-2.5.0-VS2017\\lib\\cmake\\SFML",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     }
