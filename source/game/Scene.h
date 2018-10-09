@@ -3,6 +3,8 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 
+#include "Running_Game.h"
+
 enum class Scene_ID {
 
 	None,
@@ -17,7 +19,9 @@ class Scene {
 
 public:
 
-	Scene(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<Scene_ID> next_scene_id);
+	Scene(std::shared_ptr<sf::RenderWindow> window, 
+		std::shared_ptr<Scene_ID> next_scene_id, 
+		std::shared_ptr<Running_Game> running_game);
 	~Scene() = default;
 
 	void draw();
@@ -38,5 +42,7 @@ protected:
 	std::shared_ptr<sf::RenderWindow> window;
 
 	std::shared_ptr<Scene_ID> next_scene_id;
+
+	std::shared_ptr<Running_Game> running_game;
 
 };

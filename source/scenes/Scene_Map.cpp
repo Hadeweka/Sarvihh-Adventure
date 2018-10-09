@@ -4,7 +4,13 @@
 
 void Scene_Map::on_init() {
 
-	map.load(100, 100);
+	if (!running_game->has_map()) {
+
+		running_game->generate_map();
+
+	}
+
+	map = running_game->get_map();
 
 	actor_x = 0.5f * 32.0f;
 	actor_y = 0.5f * 18.0f;
@@ -16,13 +22,13 @@ void Scene_Map::on_init() {
 
 void Scene_Map::draw_routine() {
 
-	map.reload_layers(actor_x, actor_y);
-	window->draw(map, sf::BlendAlpha);
+	map->reload_layers(actor_x, actor_y);
+	window->draw(*map, sf::BlendAlpha);
 }
 
 void Scene_Map::update_routine() {
 
-	map.update();
+	map->update();
 	update_view();
 
 }

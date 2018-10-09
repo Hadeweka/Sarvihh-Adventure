@@ -23,7 +23,7 @@ private:
 
 	void update_view();
 
-	Map map;
+	std::shared_ptr<Map> map;
 	sf::View view;
 
 	float actor_x;

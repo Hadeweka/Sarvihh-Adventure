@@ -28,9 +28,10 @@ set(MAP_SOURCES
 # Load game source files
 set(GAME_SOURCES 
 	source/game/Game.cpp 
+	source/game/Running_Game.cpp
 	source/game/Counter.cpp 
 	source/game/Scene.cpp
-	source/game/Actor.cpp
+	source/game/Entity.cpp
 )
 
 # Load scenes

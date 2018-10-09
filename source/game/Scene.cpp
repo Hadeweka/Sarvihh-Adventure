@@ -1,9 +1,12 @@
 #include "Scene.h"
 
-Scene::Scene(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<Scene_ID> next_scene_id) {
+Scene::Scene(std::shared_ptr<sf::RenderWindow> window, 
+	std::shared_ptr<Scene_ID> next_scene_id, 
+	std::shared_ptr<Running_Game> running_game) {
 
 	this->window = window;
 	this->next_scene_id = next_scene_id;
+	this->running_game = running_game;
 
 }
 
