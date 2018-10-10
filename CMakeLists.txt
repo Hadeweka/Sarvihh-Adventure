@@ -29,7 +29,6 @@ set(MAP_SOURCES
 set(GAME_SOURCES 
 	source/game/Game.cpp 
 	source/game/Running_Game.cpp
-	source/game/Counter.cpp 
 	source/game/Scene.cpp
 	source/game/Entity.cpp
 )

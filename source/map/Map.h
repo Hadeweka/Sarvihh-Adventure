@@ -27,6 +27,6 @@ private:
 	//! Layers: 0 - Ground, 1 - Ground Decoration, 2 - Objects
 	std::array<Map_Layer, 3> map_layers;
 
-	std::shared_ptr<Counter> frame_counter_ptr;
+	std::shared_ptr<unsigned int> frame_counter_ptr;
 
 };

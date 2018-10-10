@@ -5,7 +5,7 @@ void Map::load(unsigned int width, unsigned int height) {
 	this->width = width;
 	this->height = height;
 
-	frame_counter_ptr = std::make_shared<Counter>();
+	frame_counter_ptr = std::make_shared<unsigned int>(0);
 
 	for (auto& map_layer : map_layers) {
 
@@ -20,7 +20,7 @@ void Map::load(unsigned int width, unsigned int height) {
 
 void Map::update() {
 
-	frame_counter_ptr->update();
+	(*frame_counter_ptr)++;
 
 }
 
