@@ -5,7 +5,6 @@
 #include <memory>
 
 #include "Map_Layer.h"
-#include "Counter.h"
 
 class Map : public sf::Drawable, public sf::Transformable {
 

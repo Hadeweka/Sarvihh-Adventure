@@ -6,7 +6,6 @@
 #include <memory>
 
 #include "Tile.h"
-#include "Counter.h"
 
 class Map_Layer : public sf::Drawable, public sf::Transformable {
 

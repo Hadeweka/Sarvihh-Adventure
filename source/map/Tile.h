@@ -2,8 +2,6 @@
 
 #include <vector>
 
-#include "Counter.h"
-
 class Tile {
 
 public:
