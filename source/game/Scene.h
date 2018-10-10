@@ -10,8 +10,7 @@ enum class Scene_ID {
 	None,
 	No_Change,
 	Map,
-	Menu,
-	Test_2
+	Menu
 
 };
 

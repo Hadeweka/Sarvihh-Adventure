@@ -9,7 +9,6 @@
 #include "Scene.h"
 #include "Scene_Map.h"
 #include "Scene_Menu.h"
-#include "Scene_Test_2.h"
 
 class Game {
 

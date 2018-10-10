@@ -17,8 +17,8 @@ void Map_Layer::generate_mesh(float cam_x, float cam_y) {
 	//! The mesh will be aligned to the camera position
 	//! Only the tiles touching the mesh will be drawn
 
-	auto exact_shift_x = cam_x * 60 - (view_width - 1) * 30 - 1;
-	auto exact_shift_y = cam_y * 60 - (view_height - 1) * 30 - 1;
+	auto exact_shift_x = cam_x - (view_width - 1) * 30 - 1;
+	auto exact_shift_y = cam_y - (view_height - 1) * 30 - 1;
 
 	auto shift_x = static_cast<int>(std::floor(exact_shift_x)) / 60;
 	auto shift_y = static_cast<int>(std::floor(exact_shift_y)) / 60;
@@ -132,9 +132,10 @@ void Map_Layer::load_tiles(unsigned int width, unsigned int height, std::shared_
 		column.resize(this->height);
 		for (auto& tile : column) {
 
-			tile = debug_counter;
-			debug_counter++;
-			debug_counter %= 3;
+			tile = debug_counter % 3;
+			if (tile == 2) tile = 0;
+			debug_counter *= 7;
+			debug_counter += 3;
 
 		}
 

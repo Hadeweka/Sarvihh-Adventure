@@ -37,7 +37,6 @@ set(GAME_SOURCES
 set(SCENE_SOURCES 
 	source/scenes/Scene_Map.cpp 
 	source/scenes/Scene_Menu.cpp 
-	source/scenes/Scene_Test_2.cpp
 )
 
 # Load source files

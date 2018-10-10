@@ -5,6 +5,7 @@
 
 #include "Scene.h"
 #include "Map.h"
+#include "Entity.h"
 
 class Scene_Map : public Scene {
 
@@ -26,7 +27,6 @@ private:
 	std::shared_ptr<Map> map;
 	sf::View view;
 
-	float actor_x;
-	float actor_y;
+	std::shared_ptr<Entity> actor;
 
 };

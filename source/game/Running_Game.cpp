@@ -20,6 +20,6 @@ std::shared_ptr<Map> Running_Game::get_map() {
 void Running_Game::generate_map() {
 
 	map = std::make_shared<Map>();
-	map->load(100, 100);
+	map->load(1000, 1000);
 
 }

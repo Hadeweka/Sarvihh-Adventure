@@ -51,7 +51,6 @@ void Game::initialize_new_scene() {
 	//! Change to new scene
 	if (*next_scene_id == Scene_ID::Map) scene = std::make_shared<Scene_Map>(window, next_scene_id, running_game);
 	if (*next_scene_id == Scene_ID::Menu) scene = std::make_shared<Scene_Menu>(window, next_scene_id, running_game);
-	if (*next_scene_id == Scene_ID::Test_2) scene = std::make_shared<Scene_Test_2>(window, next_scene_id, running_game);
 
 	scene->on_init();
 	*next_scene_id = Scene_ID::No_Change;

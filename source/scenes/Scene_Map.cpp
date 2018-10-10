@@ -12,8 +12,10 @@ void Scene_Map::on_init() {
 
 	map = running_game->get_map();
 
-	actor_x = 0.5f * 32.0f;
-	actor_y = 0.5f * 18.0f;
+	//! Debug starting position
+
+	actor = std::make_shared<Entity>();
+	actor->set_coords(sf::Vector2<int>(1920 / 2, 1080 / 2));
 
 	view = sf::View(sf::FloatRect(0, 0, 1920, 1080));
 	update_view();
@@ -22,7 +24,8 @@ void Scene_Map::on_init() {
 
 void Scene_Map::draw_routine() {
 
-	map->reload_layers(actor_x, actor_y);
+	auto actor_coords = actor->get_coords();
+	map->reload_layers(static_cast<float>(actor_coords.x), static_cast<float>(actor_coords.y));
 	window->draw(*map, sf::BlendAlpha);
 }
 
@@ -35,7 +38,8 @@ void Scene_Map::update_routine() {
 
 void Scene_Map::update_view() {
 
-	view.setCenter(actor_x * 60, actor_y * 60);
+	auto actor_coords = actor->get_coords();
+	view.setCenter(static_cast<float>(actor_coords.x), static_cast<float>(actor_coords.y));
 	window->setView(view);
 
 }
@@ -44,16 +48,15 @@ void Scene_Map::process_events() {
 
 	sf::Event event;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) actor_x -= 0.1f;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) actor_x += 0.1f;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) actor->move_by(sf::Vector2i(-6, 0));
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) actor->move_by(sf::Vector2i(6, 0));
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) actor_y -= 0.1f;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) actor_y += 0.1f;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) actor->move_by(sf::Vector2i(0, -6));
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) actor->move_by(sf::Vector2i(0, 6));
 
 	while (window->pollEvent(event)) {
 
 		if (event.key.code == sf::Keyboard::Escape) change_scene(Scene_ID::None);
-		if (event.key.code == sf::Keyboard::Enter) change_scene(Scene_ID::Test_2);
 
 	}
 
