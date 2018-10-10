@@ -55,4 +55,5 @@ target_link_libraries(Sarvihh sfml-graphics sfml-audio sfml-system sfml-window)
 # Copy resources
 configure_file(
 	media/graphics/Tileset.png
+	media/graphics/Tileset.png
 COPYONLY)
