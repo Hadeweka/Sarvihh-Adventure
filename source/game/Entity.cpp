@@ -40,6 +40,6 @@ void Entity::set_texture_rect(const sf::IntRect& rectangle) {
 
 	sprite.setTextureRect(rectangle);
 	//! TODO: Enable custom midpoint instead of rectangle mid
-	sprite.setOrigin(sf::Vector2f(0.5 * static_cast<float>(rectangle.width), 0.5 * static_cast<float>(rectangle.height)));
+	sprite.setOrigin(sf::Vector2f(0.5f * static_cast<float>(rectangle.width), 0.5f * static_cast<float>(rectangle.height)));
 
 }
