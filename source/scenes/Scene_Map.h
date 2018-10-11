@@ -29,4 +29,6 @@ private:
 
 	std::shared_ptr<Entity> actor;
 
+	sf::Texture sarvihh_texture;
+
 };

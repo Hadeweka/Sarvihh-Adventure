@@ -9,9 +9,12 @@ public:
 	Entity();
 	~Entity() = default;
 
-	sf::Vector2<int> get_coords();
-	void set_coords(sf::Vector2<int> new_coords);
-	void move_by(sf::Vector2<int> move_coords);
+	sf::Vector2i get_coords();
+	void set_coords(sf::Vector2i new_coords);
+	void move_by(sf::Vector2i move_coords);
+
+	void set_texture(const sf::Texture& texture);
+	void set_texture_rect(const sf::IntRect& rectangle);
 
 private:
 

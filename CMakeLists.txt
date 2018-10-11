@@ -56,3 +56,8 @@ configure_file(
 	media/graphics/Tileset.png
 	media/graphics/Tileset.png
 COPYONLY)
+
+configure_file(
+	media/graphics/Sarvihh.png
+	media/graphics/Sarvihh.png
+COPYONLY)

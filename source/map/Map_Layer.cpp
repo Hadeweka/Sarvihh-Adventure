@@ -100,7 +100,7 @@ void Map_Layer::generate_mesh(float cam_x, float cam_y) {
 
 void Map_Layer::load_tiles(unsigned int width, unsigned int height, std::shared_ptr<unsigned int> frame_counter_ptr) {
 
-	//! TODO: Put files in build folder
+	//! TODO: Don't load this file more than ONE SINGLE TIME
 	if (!tileset.loadFromFile("media/graphics/Tileset.png")) {
 
 		exit(-1);

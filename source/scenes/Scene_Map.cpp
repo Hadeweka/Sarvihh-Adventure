@@ -15,7 +15,16 @@ void Scene_Map::on_init() {
 	//! Debug starting position
 
 	actor = std::make_shared<Entity>();
-	actor->set_coords(sf::Vector2<int>(1920 / 2, 1080 / 2));
+	actor->set_coords(sf::Vector2i(1920 / 2, 1080 / 2));
+
+	if (!sarvihh_texture.loadFromFile("media/graphics/Sarvihh.png")) {
+
+		exit(-1);
+		//! TODO: Error handling
+	}
+
+	actor->set_texture(sarvihh_texture);
+	actor->set_texture_rect(sf::IntRect(0, 0, 50, 30));
 
 	view = sf::View(sf::FloatRect(0, 0, 1920, 1080));
 	update_view();
@@ -27,6 +36,7 @@ void Scene_Map::draw_routine() {
 	auto actor_coords = actor->get_coords();
 	map->reload_layers(static_cast<float>(actor_coords.x), static_cast<float>(actor_coords.y));
 	window->draw(*map, sf::BlendAlpha);
+	window->draw(*actor, sf::BlendAlpha);
 }
 
 void Scene_Map::update_routine() {
@@ -48,11 +58,25 @@ void Scene_Map::process_events() {
 
 	sf::Event event;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) actor->move_by(sf::Vector2i(-6, 0));
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) actor->move_by(sf::Vector2i(6, 0));
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+		actor->move_by(sf::Vector2i(-6, 0));
+		actor->set_texture_rect(sf::IntRect(0, 0, 50, 30));
+	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) actor->move_by(sf::Vector2i(0, -6));
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) actor->move_by(sf::Vector2i(0, 6));
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+		actor->move_by(sf::Vector2i(6, 0));
+		actor->set_texture_rect(sf::IntRect(0, 0, 50, 30));
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+		actor->move_by(sf::Vector2i(0, -6));
+		actor->set_texture_rect(sf::IntRect(50, 0, 30, 50));
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+		actor->move_by(sf::Vector2i(0, 6));
+		actor->set_texture_rect(sf::IntRect(50, 0, 30, 50));
+	}
 
 	while (window->pollEvent(event)) {
 
