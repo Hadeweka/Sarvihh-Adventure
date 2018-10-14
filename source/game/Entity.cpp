@@ -2,6 +2,7 @@
 
 Entity::Entity() {
 
+	sprite.setRotation(0.0f);
 
 }
 
@@ -12,21 +13,55 @@ void Entity::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 
 }
 
-sf::Vector2i Entity::get_coords() {
+sf::Vector2i Entity::get_int_coords() {
 
-	return sf::Vector2i(sprite.getPosition());
-
-}
-
-void Entity::set_coords(sf::Vector2i new_coords) {
-
-	sprite.setPosition(sf::Vector2f(new_coords));
+	return sf::Vector2i(get_coords());
 
 }
 
-void Entity::move_by(sf::Vector2i move_coords) {
+sf::Vector2f Entity::get_coords() {
 
-	sprite.move(sf::Vector2f(move_coords));
+	return sf::Vector2f(sprite.getPosition());
+
+}
+
+void Entity::set_coords(sf::Vector2f new_coords) {
+
+	sprite.setPosition(new_coords);
+
+}
+
+void Entity::move_by(sf::Vector2f move_coords) {
+
+	sprite.move(move_coords);
+
+}
+
+void Entity::turn_towards(float angle, float speed) {
+
+	//! TODO: Check collisions. Do this by buffering the input.
+	
+	//! Basic idea: Avoid phase shifts by transforming the desired angle to 180 degrees
+
+	//! TODO!!!
+
+}
+
+void Entity::rotate_by(float angle) {
+
+	sprite.rotate(angle);
+
+}
+
+void Entity::set_angle(float angle) {
+
+	sprite.setRotation(angle);
+
+}
+
+float Entity::get_angle() {
+
+	return sprite.getRotation();
 
 }
 
