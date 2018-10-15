@@ -58,25 +58,64 @@ void Scene_Map::process_events() {
 
 	sf::Event event;
 
+	auto turn_angle = 0.0f;
+	auto turn_count = 0u;
+
+	auto motion = sf::Vector2f();
+
+	auto go_up = false;
+	auto go_down = false;
+	auto go_left = false;
+	auto go_right = false;
+
+	auto do_turn = true;
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		actor->move_by(sf::Vector2f(-6.0f, 0.0f));
-		actor->turn_towards(0.0f, 6.0f);
+		go_left = true;
+		motion.x -= 6.0f;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		actor->move_by(sf::Vector2f(6.0f, 0.0f));
-		actor->turn_towards(180.0f, 6.0f);
+		go_right = true;
+		motion.x += 6.0f;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-		actor->move_by(sf::Vector2f(0.0f, -6.0f));
-		actor->turn_towards(90.0f, 6.0f);
+		go_up = true;
+		motion.y -= 6.0f;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		actor->move_by(sf::Vector2f(0.0f, 6.0f));
-		actor->turn_towards(270.0f, 6.0f);
+		go_down = true;
+		motion.y += 6.0f;
 	}
+
+	int dir_x = (go_right - go_left);
+	int dir_y = (go_down - go_up);
+
+	if (dir_x == 1) {
+
+		if (dir_y == -1) turn_angle = 135.0f;
+		else if (dir_y == 0) turn_angle = 180.0f;
+		else if (dir_y == 1) turn_angle = 225.0f;
+
+	} else if (dir_x == 0) {
+
+		if (dir_y == -1) turn_angle = 90.0;
+		else if (dir_y == 0) do_turn = false;
+		else if (dir_y == 1) turn_angle = 270.0f;
+
+	} else if (dir_x == -1) {
+
+		if (dir_y == -1) turn_angle = 45.0f;
+		else if (dir_y == 0) turn_angle = 0.0f;
+		else if (dir_y == 1) turn_angle = 315.0f;
+
+	}
+
+	actor->move_by(motion);
+
+	if(do_turn) actor->turn_towards(turn_angle, 6.0f);
 
 	while (window->pollEvent(event)) {
 

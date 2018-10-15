@@ -9,6 +9,8 @@ public:
 	Entity();
 	~Entity() = default;
 
+	void update();
+
 	sf::Vector2f get_coords();
 	sf::Vector2i get_int_coords();
 
@@ -29,5 +31,7 @@ private:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 	sf::Sprite sprite;
+
+	sf::Vector2f velocity;
 
 };

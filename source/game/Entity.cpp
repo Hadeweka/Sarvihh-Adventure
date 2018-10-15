@@ -19,6 +19,13 @@ sf::Vector2i Entity::get_int_coords() {
 
 }
 
+void Entity::update() {
+
+	//! TODO: Actual movement physics here
+	move_by(velocity);
+
+}
+
 sf::Vector2f Entity::get_coords() {
 
 	return sf::Vector2f(sprite.getPosition());
@@ -41,9 +48,18 @@ void Entity::turn_towards(float angle, float speed) {
 
 	//! TODO: Check collisions. Do this by buffering the input.
 	
-	//! Basic idea: Avoid phase shifts by transforming the desired angle to 180 degrees
+	auto previous_angle = get_angle();
+	auto difference_angle = std::remainderf((previous_angle - angle), 360.0f);
 
-	//! TODO!!!
+	if (fabs(difference_angle) <= speed * 1.0f) {
+	
+		set_angle(angle);
+	
+	} else {
+
+		rotate_by(difference_angle <= 0.0f ? speed : -speed);
+
+	}
 
 }
 
