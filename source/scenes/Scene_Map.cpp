@@ -62,6 +62,7 @@ void Scene_Map::process_events() {
 	auto turn_count = 0u;
 
 	auto motion = sf::Vector2f();
+	auto motion_multiplicator = 1.0f;
 
 	auto go_up = false;
 	auto go_down = false;
@@ -90,6 +91,15 @@ void Scene_Map::process_events() {
 		motion.y += 6.0f;
 	}
 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+		motion_multiplicator = 1.5f;
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+		do_turn = false;
+		motion_multiplicator = 0.5f;
+	}
+
 	int dir_x = (go_right - go_left);
 	int dir_y = (go_down - go_up);
 
@@ -113,9 +123,9 @@ void Scene_Map::process_events() {
 
 	}
 
-	actor->move_by(motion);
+	actor->move_by(motion * motion_multiplicator);
 
-	if(do_turn) actor->turn_towards(turn_angle, 6.0f);
+	if(do_turn) actor->turn_towards(turn_angle, 12.25f);
 
 	while (window->pollEvent(event)) {
 
