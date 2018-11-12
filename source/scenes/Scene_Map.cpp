@@ -41,7 +41,17 @@ void Scene_Map::draw_routine() {
 
 void Scene_Map::update_routine() {
 
+	//! Main map update
 	map->update();
+
+	//! Separated ticks for each entity's physics
+	for (unsigned int tick_counter = 0; tick_counter < 20; tick_counter++) {
+
+		actor->tick();
+
+	}
+
+	//! Update the camera
 	update_view();
 
 }
@@ -123,7 +133,7 @@ void Scene_Map::process_events() {
 
 	}
 
-	actor->move_by(motion * motion_multiplicator);
+	actor->single_motion(motion * motion_multiplicator);
 
 	if(do_turn) actor->turn_towards(turn_angle, 12.25f);
 

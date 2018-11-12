@@ -19,10 +19,11 @@ sf::Vector2i Entity::get_int_coords() {
 
 }
 
-void Entity::update() {
+void Entity::tick() {
 
-	//! TODO: Actual movement physics here
-	move_by(velocity);
+	auto distance_per_movement_tick = velocity * 0.05f;
+
+	move_by(distance_per_movement_tick);
 
 }
 
@@ -73,6 +74,11 @@ void Entity::set_angle(float angle) {
 
 	sprite.setRotation(angle);
 
+}
+
+void Entity::single_motion(sf::Vector2f motion_velocity) {
+
+	velocity = motion_velocity;
 }
 
 float Entity::get_angle() {
