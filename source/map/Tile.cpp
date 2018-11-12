@@ -12,6 +12,12 @@ bool Tile::is_animation_frame() {
 
 }
 
+void Tile::set_as_solid() {
+
+	solid = true;
+
+}
+
 void Tile::set_animation(unsigned int index_of_first_animation_frame, 
 	unsigned int index_of_first_other_animation_frame,
 	unsigned int number_of_animation_frames,

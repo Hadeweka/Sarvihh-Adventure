@@ -45,6 +45,8 @@ void Scene_Map::update_routine() {
 	map->update();
 
 	//! Separated ticks for each entity's physics
+	//! TODO: Check whether the maximum interaction range intersects other ranges
+	//! TODO: Only apply these ticks if interacting with other ranges
 	for (unsigned int tick_counter = 0; tick_counter < 20; tick_counter++) {
 
 		actor->tick();

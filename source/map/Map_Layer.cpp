@@ -116,6 +116,11 @@ void Map_Layer::load_tiles(unsigned int width, unsigned int height, std::shared_
 	tile_data.resize(n_tiles);
 
 	tile_data[2].set_animation(2, 3, 2, 60);
+	
+	tile_data[2].set_as_solid();
+	tile_data[3].set_as_solid();
+	tile_data[4].set_as_solid();
+	tile_data[5].set_as_solid();
 
 	background_tile = 2;
 
