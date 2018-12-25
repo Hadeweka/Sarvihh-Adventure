@@ -32,6 +32,7 @@ set(GAME_SOURCES
 	source/game/Scene.cpp
 	source/game/Entity.cpp
 	source/game/Collider.cpp
+	source/game/Collision_Shape.cpp
 )
 
 # Load scenes

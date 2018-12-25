@@ -1,11 +1,11 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "Collision_Shape.h"
 
 namespace Collider {
 
-	bool check_circle_against_circle(sf::Vector2f circle_1_center, float circle_1_radius, 
-		sf::Vector2f circle_2_center, float circle_2_radius);
+	template <typename CS1, typename CS2> bool check_shapes_for_collision(CS1& shape_1, CS2& shape_2);
 
 	//! TODO: More collision algorithms
 	//! TODO: Ellipse - Ellipse (with rotation)
